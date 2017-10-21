@@ -1,6 +1,7 @@
 ---
 title: Entity Framework 6
 author: rowanmiller
+manager: ajcvickers
 ms.author: divega
 ms.manager: avickers
 ms.date: 10/27/2016
