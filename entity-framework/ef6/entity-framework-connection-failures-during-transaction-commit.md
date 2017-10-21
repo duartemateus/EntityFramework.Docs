@@ -1,5 +1,5 @@
 ---
-title: "Entity Framework Connection Failures During Transaction Commit | Microsoft Docs"
+title: "Entity Framework Connection Failures During Transaction Commit - EF6"
 author: divega
 ms.date: "2016-10-23"
 ms.prod: "entity-framework"
@@ -15,7 +15,7 @@ caps.latest.revision: 3
 # Entity Framework Connection Failures During Transaction Commit
 In general when there is a connection failure the current transaction is rolled back. However if the connection is dropped while the transaction is being committed the resulting state of the transaction is unknown. See [this blog post](http://blogs.msdn.com/b/adonet/archive/2013/03/11/sql-database-connectivity-and-the-idempotency-issue.aspx) for more details.  
   
-Currently EF doesn?t provide any special tools to handle this scenario. The [SqlAzureExecutionStrategy](../ef6/entity-framework-connection-resiliency-and-retry-logic-ef6-onwards.md) will not retry an operation if it failed in this way.  
+Currently EF doesn't provide any special tools to handle this scenario. The [SqlAzureExecutionStrategy](../ef6/entity-framework-connection-resiliency-and-retry-logic-ef6-onwards.md) will not retry an operation if it failed in this way.  
   
 There are several ways to dealing with this:  
   

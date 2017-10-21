@@ -1,5 +1,5 @@
 ---
-title: "Entity Framework Code First to an Existing Database | Microsoft Docs"
+title: "Entity Framework Code First to an Existing Database - EF6"
 author: divega
 ms.date: "2016-10-23"
 ms.prod: "entity-framework"
@@ -33,7 +33,7 @@ Let's go ahead and generate the database.
 -   Open Visual Studio
 -   **View -&gt; Server Explorer**
 -   Right click on **Data Connections -&gt; Add Connection?**
--   If you haven?t connected to a database from **Server Explorer** before you?ll need to select **Microsoft SQL Server** as the data source
+-   If you haven't connected to a database from **Server Explorer** before you'll need to select **Microsoft SQL Server** as the data source
     
     ![SelectDataSource](../ef6/media/selectdatasource.png)
     
@@ -74,7 +74,7 @@ VALUES ('.NET Framework Blog', 'http://blogs.msdn.com/dotnet/')
 
 ## 2. Create the Application
 
-To keep things simple we?re going to build a basic console application that uses Code First to perform data access:
+To keep things simple we're going to build a basic console application that uses Code First to perform data access:
 
 -   Open Visual Studio
 -   **File -&gt; New -&gt; Project?**
@@ -86,7 +86,7 @@ To keep things simple we?re going to build a basic console application that uses
 
 ## 3. Reverse Engineer Model
 
-We?re going to make use of the Entity Framework Tools for Visual Studio to help us generate some initial code to map to the database. These tools are just generating code that you could also type by hand if you prefer.
+We're going to make use of the Entity Framework Tools for Visual Studio to help us generate some initial code to map to the database. These tools are just generating code that you could also type by hand if you prefer.
 
 -   **Project -&gt; Add New Item?**
 -   Select **Data** from the left menu and then **ADO.NET Entity Data Model**
@@ -119,12 +119,12 @@ An App.config file has been added to the project, this file contains the connect
 </connectionStrings>
 ```
 
-*You?ll notice some other settings in the configuration file too, these are default EF settings that tell Code First where to create databases. Since we are mapping to an existing database these setting will be ignored in our application.*
+*You'll notice some other settings in the configuration file too, these are default EF settings that tell Code First where to create databases. Since we are mapping to an existing database these setting will be ignored in our application.*
 
 ### Derived Context
 
 A **BloggingContext** class has been added to the project. The context represents a session with the database, allowing us to query and save data.
-The context exposes a **DbSet&lt;TEntity&gt;** for each type in our model. You?ll also notice that the default constructor calls a base constructor using the **name=** syntax. This tells Code First that the connection string to use for this context should be loaded from the configuration file.
+The context exposes a **DbSet&lt;TEntity&gt;** for each type in our model. You'll also notice that the default constructor calls a base constructor using the **name=** syntax. This tells Code First that the connection string to use for this context should be loaded from the configuration file.
 
 ```
 public partial class BloggingContext : DbContext 
@@ -171,7 +171,7 @@ public partial class Blog
 
 ## 4. Reading & Writing Data
 
-Now that we have a model it?s time to use it to access some data. Implement the **Main** method in **Program.cs** as shown below. This code creates a new instance of our context and then uses it to insert a new **Blog**. Then it uses a LINQ query to retrieve all **Blogs** from the database ordered alphabetically by **Title**.
+Now that we have a model it's time to use it to access some data. Implement the **Main** method in **Program.cs** as shown below. This code creates a new instance of our context and then uses it to insert a new **Blog**. Then it uses a LINQ query to retrieve all **Blogs** from the database ordered alphabetically by **Title**.
 
 ```
 class Program 

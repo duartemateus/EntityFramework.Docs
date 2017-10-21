@@ -1,11 +1,11 @@
 ---
-title: "Entity Framework Code First Data Annotations | Microsoft Docs"
+title: "Entity Framework Code First Data Annotations - EF6"
 author: divega
 ms.date: "2016-10-23"
 ms.prod: "entity-framework"
 ms.author: divega
 ms.manager: avickers
- 
+
 
 ms.technology: entity-framework-6
 ms.topic: "article"
@@ -19,32 +19,32 @@ The content on this page is adapted from and article originally written by Julie
 
 Entity Framework Code First allows you to use your own domain classes to represent the model which EF relies on to perform querying, change tracking and updating functions. Code first leverages a programming pattern referred to as convention over configuration. What this means is that code first will assume that your classes follow the conventions that EF uses. In that case, EF will be able to work out the details it needs to do its job. However, if your classes do not follow those conventions, you have the ability to add configurations to your classes to provide EF with the information it needs.
 
-Code first gives you two ways to add these configurations to your classes. One is using simple attributes called DataAnnotations and the other is using code first?s Fluent API, which provides you with a way to describe configurations imperatively, in code.
+Code first gives you two ways to add these configurations to your classes. One is using simple attributes called DataAnnotations and the other is using code first's Fluent API, which provides you with a way to describe configurations imperatively, in code.
 
-This article will focus on using DataAnnotations (in the System.ComponentModel.DataAnnotations namespace) to configure your classes ? highlighting the most commonly needed configurations. DataAnnotations are also understood by a number of .NET applications, such as ASP.NET MVC which allows these applications to leverage the same annotations for client-side validations.
+This article will focus on using DataAnnotations (in the System.ComponentModel.DataAnnotations namespace) to configure your classes highlighting the most commonly needed configurations. DataAnnotations are also understood by a number of .NET applications, such as ASP.NET MVC which allows these applications to leverage the same annotations for client-side validations.
 
 
 ## The model
 
-I?ll demonstrate code first DataAnnotations with a simple pair of classes: Blog and Post.
+I'll demonstrate code first DataAnnotations with a simple pair of classes: Blog and Post.
 
 ```
     public class Blog
     {
-    ??? public int Id { get; set; }
-    ??? public string Title { get; set; }
-    ??? public string BloggerName { get; set;}
-    ??? public virtual ICollection<Post> Posts { get; set; }
+    public int Id { get; set; }
+    public string Title { get; set; }
+    public string BloggerName { get; set;}
+    public virtual ICollection<Post> Posts { get; set; }
     }
 
     public class Post
     {
-    ??? public int Id { get; set; }
-    ??? public string Title { get; set; }
-    ??? public DateTime DateCreated { get; set; }
-    ??? public string Content { get; set; }
-    ??? public int BlogId { get; set; }
-    ??? public ICollection<Comment> Comments { get; set; }
+    public int Id { get; set; }
+    public string Title { get; set; }
+    public DateTime DateCreated { get; set; }
+    public string Content { get; set; }
+    public int BlogId { get; set; }
+    public ICollection<Comment> Comments { get; set; }
     }
 ```
 
@@ -56,20 +56,20 @@ As they are, the Blog and Post classes conveniently follow code first convention
 
 Entity Framework relies on every entity having a key value that it uses for tracking entities. One of the conventions that code first depends on is how it implies which property is the key in each of the code first classes. That convention is to look for a property named ?Id? or one that combines the class name and ?Id?, such as ?BlogId?. The property will map to a primary key column in the database.
 
-The Blog and Post classes both follow this convention. But what if they didn?t? What if Blog used the name *PrimaryTrackingKey* instead or even *foo*? If code first does not find a property that matches this convention it will throw an exception because of Entity Framework?s requirement that you must have a key property. You can use the key annotation to specify which property is to be used as the EntityKey.
+The Blog and Post classes both follow this convention. But what if they didn?t? What if Blog used the name *PrimaryTrackingKey* instead or even *foo*? If code first does not find a property that matches this convention it will throw an exception because of Entity Framework's requirement that you must have a key property. You can use the key annotation to specify which property is to be used as the EntityKey.
 
 ```
     public class Blog
     {
-    ??? [Key]
-    ??? public int PrimaryTrackingKey { get; set; }
-    ??? public string Title { get; set; }
-    ??? public string BloggerName { get; set;}
-    ??? public virtual ICollection<Post> Posts { get; set; }
+    [Key]
+    public int PrimaryTrackingKey { get; set; }
+    public string Title { get; set; }
+    public string BloggerName { get; set;}
+    public virtual ICollection<Post> Posts { get; set; }
     }
 ```
 
-If you are using code first?s database generation feature, the Blog table will have a primary key column named PrimaryTrackingKey which is also defined as Identity by default.
+If you are using code first's database generation feature, the Blog table will have a primary key column named PrimaryTrackingKey which is also defined as Identity by default.
 
 ![jj591583_figure01](../ef6/media/jj591583-figure01.png)
 
@@ -171,7 +171,7 @@ Here is the BloggerName with length requirements. The example also demonstrates 
     public string BloggerName { get; set; }
 ```
 
-The MaxLength annotation will impact the database by setting the property?s length to 10.
+The MaxLength annotation will impact the database by setting the property's length to 10.
 
 ![jj591583_figure04](../ef6/media/jj591583-figure04.png)
 
@@ -190,7 +190,7 @@ You can also specify ErrorMessage in the Required annotation.
 
 ## NotMapped
 
-Code first convention dictates that every property that is of a supported data type is represented in the database. But this isn?t always the case in your applications. For example you might have a property in the Blog class that creates a code based on the Title and BloggerName fields. That property can be created dynamically and does not need to be stored. You can mark any properties that do not map to the database with the NotMapped annotation such as this BlogCode property.
+Code first convention dictates that every property that is of a supported data type is represented in the database. But this isn't always the case in your applications. For example you might have a property in the Blog class that creates a code based on the Title and BloggerName fields. That property can be created dynamically and does not need to be stored. You can mark any properties that do not map to the database with the NotMapped annotation such as this BlogCode property.
 
 ```
     [NotMapped]
@@ -207,15 +207,15 @@ Code first convention dictates that every property that is of a supported data t
 
 ## ComplexType
 
-It?s not uncommon to describe your domain entities across a set of classes and then layer those classes to describe a complete entity. For example, you may add a class called BlogDetails to your model.
+It's not uncommon to describe your domain entities across a set of classes and then layer those classes to describe a complete entity. For example, you may add a class called BlogDetails to your model.
 
 ```
     public class BlogDetails
     {
         public DateTime? DateCreated { get; set; }
 
-    ??? [MaxLength(250)]
-    ??? public string Description { get; set; }
+    [MaxLength(250)]
+    public string Description { get; set; }
     }
 ```
 
@@ -229,15 +229,15 @@ However as a property in the Blog class, BlogDetails it will be tracked as part 
     {
         public DateTime? DateCreated { get; set; }
 
-    ??? [MaxLength(250)]
-    ??? public string Description { get; set; }
+    [MaxLength(250)]
+    public string Description { get; set; }
     }
 ```
 
 Now you can add a property in the Blog class to represent the BlogDetails for that blog.
 
 ```
-    ??? public BlogDetails BlogDetail { get; set; }
+    public BlogDetails BlogDetail { get; set; }
 ```
 
 In the database, the Blog table will contain all of the properties of the blog including the properties contained in its BlogDetail property. By default, each one is preceded with the name of the complex type, BlogDetail.
@@ -252,7 +252,7 @@ Another interesting note is that although the DateCreated property was defined a
 
 The ConcurrencyCheck annotation allows you to flag one or more properties to be used for concurrency checking in the database when a user edits or deletes an entity. If you've been working with the EF Designer, this aligns with setting a property's ConcurrencyMode to Fixed.
 
-Let?s see how ConcurrencyCheck works by adding it to the BloggerName property.
+Let's see how ConcurrencyCheck works by adding it to the BloggerName property.
 
 ```
     [ConcurrencyCheck,?MaxLength(10, ErrorMessage="BloggerName must be 10 characters or less"),MinLength(5)]
@@ -266,7 +266,7 @@ When SaveChanges is called, because of the ConcurrencyCheck annotation on the Bl
     @4=1,@5=N'Julie'
 ```
 
-If someone has changed the blogger name for that blog in the meantime, this update will fail and you?ll get a DbUpdateConcurrencyException that you'll need to handle.
+If someone has changed the blogger name for that blog in the meantime, this update will fail and you'll get a DbUpdateConcurrencyException that you'll need to handle.
 
 ?
 
@@ -305,9 +305,9 @@ The Column annotation is a more adept in specifying the attributes of a mapped c
     public String Description {get;set;}
 ```
 
-Don?t confuse Column?s TypeName attribute with the DataType DataAnnotation. DataType is an annotation used for the UI and is ignored by Code First.
+Don't confuse Column's TypeName attribute with the DataType DataAnnotation. DataType is an annotation used for the UI and is ignored by Code First.
 
-Here is the table after it?s been regenerated. The table name has changed to InternalBlogs and Description column from the complex type is now BlogDescription. Because the name was specified in the annotation, code first will not use the convention of starting the column name with the name of the complex type.
+Here is the table after it's been regenerated. The table name has changed to InternalBlogs and Description column from the complex type is now BlogDescription. Because the name was specified in the annotation, code first will not use the convention of starting the column name with the name of the complex type.
 
 ![jj591583_figure08](../ef6/media/jj591583-figure08.png)
 
@@ -397,19 +397,19 @@ Code first convention will take care of the most common relationships in your mo
 
 Changing the name of the key property in the Blog class created a problem with its relationship to Post.?
 
-When generating the database, code first sees the BlogId property in the Post class and recognizes it, by the convention that it matches a class name plus ?Id?, as a foreign key to the Blog class. But there is no BlogId property in the blog class. The solution for this is to create a navigation property in the Post and use the Foreign DataAnnotation to help code first understand how to build the relationship between the two classes ?using the Post.BlogId property ? as well as how to specify constraints in the database.
+When generating the database, code first sees the BlogId property in the Post class and recognizes it, by the convention that it matches a class name plus ?Id?, as a foreign key to the Blog class. But there is no BlogId property in the blog class. The solution for this is to create a navigation property in the Post and use the Foreign DataAnnotation to help code first understand how to build the relationship between the two classes ?using the Post.BlogId property as well as how to specify constraints in the database.
 
 ```
     public class Post
     {
-    ??????? public int Id { get; set; }
-    ??????? public string Title { get; set; }
-    ??????? public DateTime DateCreated { get; set; }
-    ??????? public string Content { get; set; }
-    ??????? public int BlogId { get; set; }
-    ??????? [ForeignKey("BlogId")]
-    ??????? public Blog Blog { get; set; }
-    ??????? public ICollection<Comment> Comments { get; set; }
+    public int Id { get; set; }
+    public string Title { get; set; }
+    public DateTime DateCreated { get; set; }
+    public string Content { get; set; }
+    public int BlogId { get; set; }
+    [ForeignKey("BlogId")]
+    public Blog Blog { get; set; }
+    public ICollection<Comment> Comments { get; set; }
     }
 ```
 
@@ -426,15 +426,15 @@ In the Post class, you may want to keep track of who wrote a blog post as well a
     public Person UpdatedBy { get; set; }
 ```
 
-You?ll also need to add in the Person class referenced by these properties. The Person class has navigation properties back to the Post, one for all of the posts written by the person and one for all of the posts updated by that person.
+You'll also need to add in the Person class referenced by these properties. The Person class has navigation properties back to the Post, one for all of the posts written by the person and one for all of the posts updated by that person.
 
 ```
     public class Person
     {
-    ??????? public int Id { get; set; }
-    ??????? public string Name { get; set; }
-    ??????? public List<Post> PostsWritten { get; set; }
-    ??????? public List<Post> PostsUpdated { get; set; }
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public List<Post> PostsWritten { get; set; }
+    public List<Post> PostsUpdated { get; set; }
     }
 ```
 
@@ -462,4 +462,4 @@ Because the PostsWritten property in Person knows that this refers to the Post t
 
 DataAnnotations not only let you describe client and server side validation in your code first classes, but they also allow you to enhance and even correct the assumptions that code first will make about your classes based on its conventions. With DataAnnotations you can not only drive database schema generation, but you can also map your code first classes to a pre-existing database.
 
-While they are very flexible, keep in mind that DataAnnotations provide only the most commonly needed configuration changes you can make on your code first classes. To configure your classes for some of the edge cases, you should look to the alternate configuration mechanism, Code First?s Fluent API .
+While they are very flexible, keep in mind that DataAnnotations provide only the most commonly needed configuration changes you can make on your code first classes. To configure your classes for some of the edge cases, you should look to the alternate configuration mechanism, Code First's Fluent API .

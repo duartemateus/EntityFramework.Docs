@@ -1,5 +1,5 @@
 ---
-title: "Entity Framework Sprocs with Multiple Result Sets | Microsoft Docs"
+title: "Entity Framework Sprocs with Multiple Result Sets - EF6"
 author: divega
 ms.date: "2016-10-23"
 ms.prod: "entity-framework"
@@ -26,8 +26,8 @@ The examples in this article use a basic Blog and Posts model where a blog has m
 ```
     CREATE PROCEDURE [dbo].[GetAllBlogsAndPosts]
     AS
-    ??? SELECT * FROM dbo.Blogs
-    ??? SELECT * FROM dbo.Posts
+    ? SELECT * FROM dbo.Blogs
+    ? SELECT * FROM dbo.Posts
 ```
 
 ?

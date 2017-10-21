@@ -1,5 +1,5 @@
 ---
-title: "Get Entity Framework | Microsoft Docs"
+title: "Get Entity Framework - EF6"
 author: divega
 ms.date: "2016-10-23"
 ms.prod: "entity-framework"

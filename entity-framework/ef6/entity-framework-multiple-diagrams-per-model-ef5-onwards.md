@@ -1,5 +1,5 @@
 ---
-title: "Entity Framework Multiple Diagrams per Model (EF5 onwards) | Microsoft Docs"
+title: "Entity Framework Multiple Diagrams per Model (EF5 onwards) - EF6"
 author: divega
 ms.date: "2016-10-23"
 ms.prod: "entity-framework"
@@ -24,7 +24,7 @@ In earlier versions of the EF Designer you could only have one diagram per the E
 
 ## EF Designer Overview
 
-When you create a model using the EF Designer?s Entity Data Model Wizard, an .edmx file is created and added to your solution. This file defines the shape of your entities and how they map to the database.
+When you create a model using the EF Designer's Entity Data Model Wizard, an .edmx file is created and added to your solution. This file defines the shape of your entities and how they map to the database.
 
 The EF Designer consists of the following components:
 

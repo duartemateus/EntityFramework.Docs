@@ -1,5 +1,5 @@
 ---
-title: "Entity Framework Provider Support for Spatial Types | Microsoft Docs"
+title: "Entity Framework Provider Support for Spatial Types - EF6"
 author: divega
 ms.date: "2016-10-23"
 ms.prod: "entity-framework"

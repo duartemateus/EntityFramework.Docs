@@ -1,5 +1,5 @@
 ---
-title: "Introduction to Entity Framework | Microsoft Docs"
+title: "Introduction to Entity Framework - EF6"
 author: divega
 ms.date: "2016-10-23"
 ms.prod: "entity-framework"
@@ -15,7 +15,7 @@ caps.latest.revision: 5
 # Introduction to Entity Framework
 ## Entity Framework
 
-*Entity Framework is Microsoft?s recommended data access technology for new applications*
+*Entity Framework is Microsoft's recommended data access technology for new applications*
 
 [![GetIt](../ef6/media/getit.png) **Get Entity Framework**](Get-Entity-Framework.md)  
 Add the EntityFramework NuGet package to your project or install the Entity Framework Tools for Visual Studio.

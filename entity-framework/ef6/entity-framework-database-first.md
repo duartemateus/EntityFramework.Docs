@@ -1,5 +1,5 @@
 ---
-title: "Entity Framework Database First | Microsoft Docs"
+title: "Entity Framework Database First - EF6"
 author: divega
 ms.date: "2016-10-23"
 ms.prod: "entity-framework"
@@ -42,7 +42,7 @@ Let's go ahead and generate the database.
 -   Open Visual Studio
 -   **View -&gt; Server Explorer**
 -   Right click on **Data Connections -&gt; Add Connection?**
--   If you haven?t connected to a database from Server Explorer before you?ll need to select Microsoft SQL Server as the data source
+-   If you haven't connected to a database from Server Explorer before you'll need to select Microsoft SQL Server as the data source
     
     ![SelectDataSource](../ef6/media/selectdatasource.png)
     
@@ -79,7 +79,7 @@ CREATE TABLE [dbo].[Posts] (
 
 ## 2. Create the Application
 
-To keep things simple we?re going to build a basic console application that uses the Database First to perform data access:
+To keep things simple we're going to build a basic console application that uses the Database First to perform data access:
 
 -   Open Visual Studio
 -   **File -&gt; New -&gt; Project?**
@@ -91,7 +91,7 @@ To keep things simple we?re going to build a basic console application that uses
 
 ## 3. Reverse Engineer Model
 
-We?re going to make use of Entity Framework Designer, which is included as part of Visual Studio, to create our model.
+We're going to make use of Entity Framework Designer, which is included as part of Visual Studio, to create our model.
 
 -   **Project -&gt; Add New Item?**
 -   Select **Data** from the left menu and then **ADO.NET Entity Data Model**
@@ -122,7 +122,7 @@ If you are working in Visual Studio 2010 there are some additional steps you nee
 First up, we need to get the latest version of Entity Framework from NuGet.
 
 -   **Project ?&gt; Manage NuGet Packages?**
-    *If you don?t have the **Manage NuGet Packages?** option you should install the [latest version of NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)*
+    *If you don't have the **Manage NuGet Packages?** option you should install the [latest version of NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)*
 -   Select the **Online** tab
 -   Select the **EntityFramework** package
 -   Click **Install**
@@ -139,7 +139,7 @@ Next, we need to swap our model to generate code that makes use of the DbContext
 
 ## 4. Reading & Writing Data
 
-Now that we have a model it?s time to use it to access some data. The classes we are going to use to access data are being automatically generated for you based on the EDMX file.
+Now that we have a model it's time to use it to access some data. The classes we are going to use to access data are being automatically generated for you based on the EDMX file.
 
 *This screen shot is from Visual Studio 2012, if you are using Visual Studio 2010 the BloggingModel.tt and BloggingModel.Context.tt files will be directly under your project rather than nested under the EDMX file.*
 
@@ -194,9 +194,9 @@ Press any key to exit...
 
 ## 5. Dealing with Database Changes
 
-Now it?s time to make some changes to our database schema, when we make these changes we also need to update our model to reflect those changes.
+Now it's time to make some changes to our database schema, when we make these changes we also need to update our model to reflect those changes.
 
-The first step is to make some changes to the database schema. We?re going to add a Users table to the schema.
+The first step is to make some changes to the database schema. We're going to add a Users table to the schema.
 
 -   Right-click on the **DatabaseFirst.Blogging** database in Server Explorer and select **New Query**
 -   Copy the following SQL into the new query, then right-click on the query and select **Execute**
@@ -209,7 +209,7 @@ CREATE TABLE [dbo].[Users]
 )
 ```
 
-Now that the schema is updated, it?s time to update the model with those changes.
+Now that the schema is updated, it's time to update the model with those changes.
 
 -   Right-click on an empty spot of your model in the EF Designer and select ?Update Model from Database??, this will launch the Update Wizard
 -   On the Add tab of the Update Wizard check the box next to Tables, this indicates that we want to add any new tables from the schema.

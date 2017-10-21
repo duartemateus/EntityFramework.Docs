@@ -1,5 +1,5 @@
 ---
-title: "Entity Framework Working with Property Values | Microsoft Docs"
+title: "Entity Framework Working with Property Values - EF6"
 author: divega
 ms.date: "2016-10-23"
 ms.prod: "entity-framework"
@@ -17,7 +17,7 @@ For the most part Entity Framework will take care of tracking the state, origina
   
 ## Working with property values  
   
-The Entity Framework keeps track of two values for each property of a tracked entity. The current value is, as the name indicates, the current value of the property in the entity. The original value is the value that the property had when the entity was queried from the database or attached to the context.  
+Entity Frameworkkeeps track of two values for each property of a tracked entity. The current value is, as the name indicates, the current value of the property in the entity. The original value is the value that the property had when the entity was queried from the database or attached to the context.  
   
 There are two general mechanisms for working with property values:  
   

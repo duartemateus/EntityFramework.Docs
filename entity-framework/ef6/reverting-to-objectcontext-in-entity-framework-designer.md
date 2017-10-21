@@ -1,5 +1,5 @@
 ---
-title: "Reverting to ObjectContext in Entity Framework Designer | Microsoft Docs"
+title: "Reverting to ObjectContext in Entity Framework Designer - EF6"
 author: divega
 ms.date: "2016-10-23"
 ms.prod: "entity-framework"

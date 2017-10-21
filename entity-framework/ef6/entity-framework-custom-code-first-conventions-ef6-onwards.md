@@ -1,5 +1,5 @@
 ---
-title: "Entity Framework Custom Code First Conventions (EF6 onwards) | Microsoft Docs"
+title: "Entity Framework Custom Code First Conventions (EF6 onwards) - EF6"
 author: divega
 ms.date: "2016-10-23"
 ms.prod: "entity-framework"
@@ -67,7 +67,7 @@ Let's start by defining a simple model that we can use with our conventions. Add
 
 ## Introducing Custom Conventions
 
-Let?s write a convention that configures any property named Key to be the primary key for its entity type.
+Let's write a convention that configures any property named Key to be the primary key for its entity type.
 
 Conventions are enabled on the model builder, which can be accessed by overriding OnModelCreating in the context. Update the ProductContext class as follows:
 
@@ -144,7 +144,7 @@ We can create a Convention Class with the datetime2 convention that we showed ea
     }
 ```
 
-To tell EF to use this convention you add it to the Conventions collection in OnModelCreating, which if you?ve been following along with the walkthrough will look like this:
+To tell EF to use this convention you add it to the Conventions collection in OnModelCreating, which if you've been following along with the walkthrough will look like this:
 
 ```
     protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -163,7 +163,7 @@ As you can see we add an instance of our convention to the conventions collectio
 
 ## Custom Attributes
 
-Another great use of conventions is to enable new attributes to be used when configuring a model. To illustrate this, let?s create an attribute that we can use to mark String properties as non-Unicode.
+Another great use of conventions is to enable new attributes to be used when configuring a model. To illustrate this, let's create an attribute that we can use to mark String properties as non-Unicode.
 
 ```
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
@@ -172,7 +172,7 @@ Another great use of conventions is to enable new attributes to be used when con
     }
 ```
 
-Now, let?s create a convention to apply this attribute to our model:
+Now, let's create a convention to apply this attribute to our model:
 
 ```
     modelBuilder.Properties()
@@ -182,7 +182,7 @@ Now, let?s create a convention to apply this attribute to our model:
 
 With this convention we can add the NonUnicode attribute to any of our string properties, which means the column in the database will be stored as varchar instead of nvarchar.
 
-One thing to note about this convention is that if you put the NonUnicode attribute on anything other than a string property then it will throw an exception. It does this because you cannot configure IsUnicode on any type other than a string. If this happens, then you can make your convention more specific, so that it filters out anything that isn?t a string.
+One thing to note about this convention is that if you put the NonUnicode attribute on anything other than a string property then it will throw an exception. It does this because you cannot configure IsUnicode on any type other than a string. If this happens, then you can make your convention more specific, so that it filters out anything that isn't a string.
 
 While the above convention works for defining custom attributes there is another API that can be much easier to use, especially when you want to use properties from the attribute class.
 

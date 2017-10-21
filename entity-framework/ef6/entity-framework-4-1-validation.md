@@ -1,5 +1,5 @@
 ---
-title: "Entity Framework 4.1 Validation | Microsoft Docs"
+title: "Entity Framework 4.1 Validation - EF6"
 author: divega
 ms.date: "2016-10-23"
 ms.prod: "entity-framework"
@@ -21,28 +21,28 @@ Entity Framework provides a great variety of validation features that can feed t
 
 ## The model
 
-I?ll demonstrate the validations with a simple pair of classes: Blog and Post.
+I'll demonstrate the validations with a simple pair of classes: Blog and Post.
 
 ```
     public class Blog
       {
-    ????? public int Id { get; set; }
-    ????? public string Title { get; set; }
-    ????? public string BloggerName { get; set; }
-    ????? public DateTime DateCreated { get; set; }
-    ????? public virtual ICollection<Post> Posts { get; set; }
-    ????? }
-    ? }
+      public int Id { get; set; }
+      public string Title { get; set; }
+      public string BloggerName { get; set; }
+      public DateTime DateCreated { get; set; }
+      public virtual ICollection<Post> Posts { get; set; }
+      }
+    }
 
-    ? public class Post
-    ? {
-    ?? ???public int Id { get; set; }
-    ??? ??public string Title { get; set; }
-    ? ????public DateTime DateCreated { get; set; }
-    ? ????public string Content { get; set; }
-    ??? ??public int BlogId { get; set; }
-    ? ????public ICollection<Comment> Comments { get; set; }
-    ? }
+    public class Post
+    {
+     ???public int Id { get; set; }
+      ??public string Title { get; set; }
+    ????public DateTime DateCreated { get; set; }
+    ????public string Content { get; set; }
+      ??public int BlogId { get; set; }
+    ????public ICollection<Comment> Comments { get; set; }
+    }
 ```
 ?
 
@@ -59,15 +59,15 @@ With no additional code or markup changes in the application, an existing MVC ap
 
 ![figure01](../ef6/media/figure01.png)
 
-In the post back method of this Create view, Entity Framework is used to save the new blog to the database, but MVC?s client-side validation is triggered before the application reaches that code.
+In the post back method of this Create view, Entity Framework is used to save the new blog to the database, but MVC's client-side validation is triggered before the application reaches that code.
 
 Client side validation is not bullet-proof however. Users can impact features of their browser or worse yet, a hacker might use some trickery to avoid the UI validations. But Entity Framework will also recognize the Required annotation and validate it.
 
-A simple way to test this is to disable MVC?s client-side validation feature. You can do this in the MVC application?s web.config file. The appSettings section has a key for ClientValidationEnabled. Setting this key to false will prevent the UI from performing validations.
+A simple way to test this is to disable MVC's client-side validation feature. You can do this in the MVC application's web.config file. The appSettings section has a key for ClientValidationEnabled. Setting this key to false will prevent the UI from performing validations.
 
 ```
     <appSettings>
-    ??? \<add key="ClientValidationEnabled"value="false"/>
+      \<add key="ClientValidationEnabled"value="false"/>
         ...
     </appSettings>
 ```
@@ -78,51 +78,51 @@ Even with the client-side validation disabled, you will get the same response in
 
 ## Fluent API
 
-You can use code first?s fluent API instead of annotations to get the same client side & server side validation. Rather than use Required, I?ll show you this using a MaxLength validation.
+You can use code first's fluent API instead of annotations to get the same client side & server side validation. Rather than use Required, I'll show you this using a MaxLength validation.
 
 Fluent API configurations are applied as code first is building the model from the classes. You can inject the configurations by overriding the DbContext class? OnModelCreating? method. Here is a configuration specifying that the BloggerName property can be no longer than 10 characters.
 
 ```
     public class BlogContext : DbContext
-    ? {
-    ????? public DbSet<Blog> Blogs { get; set; }
-    ????? public DbSet<Post> Posts { get; set; }
-    ????? public DbSet<Comment> Comments { get; set; }
+    {
+      public DbSet<Blog> Blogs { get; set; }
+      public DbSet<Post> Posts { get; set; }
+      public DbSet<Comment> Comments { get; set; }
 
-    ????? protected override void OnModelCreating(DbModelBuilder modelBuilder)
-    ????? {
-    ????????? modelBuilder.Entity<Blog>().Property(p => p.BloggerName).HasMaxLength(10);
-    ????? }
-    ??? }
+      protected override void OnModelCreating(DbModelBuilder modelBuilder)
+      {
+        modelBuilder.Entity<Blog>().Property(p => p.BloggerName).HasMaxLength(10);
+      }
+      }
 ```
 
 Validation errors thrown based on the Fluent API configurations will not automatically reach the UI, but you can capture it in code and then respond to it accordingly.
 
-Here?s some exception handling error code in the application?s BlogController class that captures that validation error when Entity Framework attempts to save a blog with a BloggerName that exceeds the 10 character maximum.
+Here's some exception handling error code in the application's BlogController class that captures that validation error when Entity Framework attempts to save a blog with a BloggerName that exceeds the 10 character maximum.
 
 ```
     [HttpPost]
     public ActionResult Edit(int id, Blog blog)
     {
-    ??? try
-    ??? {
-    ??????? db.Entry(blog).State = EntityState.Modified;
-    ??????? db.SaveChanges();
-    ??????? return RedirectToAction("Index");
-    ??? }
-    ??? catch(DbEntityValidationException ex)
-    ??? {
-    ??? ????var error = ex.EntityValidationErrors.First().ValidationErrors.First();
-    ??????? this.ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
-    ??????? return View();
-    ??? }
+      try
+      {
+      db.Entry(blog).State = EntityState.Modified;
+      db.SaveChanges();
+      return RedirectToAction("Index");
+      }
+      catch(DbEntityValidationException ex)
+      {
+      ????var error = ex.EntityValidationErrors.First().ValidationErrors.First();
+      this.ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+      return View();
+      }
     }
 ```
 
-The validation doesn?t automatically get passed back into the view which is why the additional code that uses ModelState.AddModelError is being used. This ensures that the error details make it to the view which will then use the ValidationMessageFor Htmlhelper to display the error.
+The validation doesn't automatically get passed back into the view which is why the additional code that uses ModelState.AddModelError is being used. This ensures that the error details make it to the view which will then use the ValidationMessageFor Htmlhelper to display the error.
 
 ```
-    ??????????? @Html.ValidationMessageFor(model => model.BloggerName)
+        @Html.ValidationMessageFor(model => model.BloggerName)
 ```
 
 ## IValidatableObject
@@ -136,21 +136,21 @@ In the following example, the Blog class has been extended to implement IValidat
 ```
     public class Blog : IValidatableObject
     ?{
-    ???? public int Id { get; set; }
-    ???? [Required]
-    ???? public string Title { get; set; }
-    ???? public string BloggerName { get; set; }
-    ???? public DateTime DateCreated { get; set; }
-    ???? public virtual ICollection<Post> Posts { get; set; }
+     public int Id { get; set; }
+     [Required]
+     public string Title { get; set; }
+     public string BloggerName { get; set; }
+     public DateTime DateCreated { get; set; }
+     public virtual ICollection<Post> Posts { get; set; }
 
-    ???? public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-    ???? {
-    ???????? if (Title == BloggerName)
-    ???????? {
-    ???????????? yield return new ValidationResult
-    ????????????? ("Blog Title cannot match Blogger Name", new[] { "Title", ?BloggerName? });
-    ???????? }
-    ???? }
+     public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+     {
+       if (Title == BloggerName)
+       {
+       yield return new ValidationResult
+        ("Blog Title cannot match Blogger Name", new[] { "Title", ?BloggerName? });
+       }
+     }
     ?}
 ```
 
@@ -164,7 +164,7 @@ Unlike the validation provided by the Fluent API, this validation result will be
 
 DbContext has an Overridable method called ValidateEntity. When you call SaveChanges, Entity Framework will call this method for each entity in its cache whose state is not Unchanged. You can put validation logic directly in here or even use this method to call, for example, the Blog.Validate method added in the previous section.
 
-Here?s an example of a ValidateEntity override that validates new Posts to ensure that the post title hasn?t been used already. It first checks to see if the entity is a post and that its state is Added. If that?s the case, then it looks in the database to see if there is already a post with the same title. If there is an existing post already, then a new DbEntityValidationResult is created.
+Here's an example of a ValidateEntity override that validates new Posts to ensure that the post title hasn't been used already. It first checks to see if the entity is a post and that its state is Added. If that's the case, then it looks in the database to see if there is already a post with the same title. If there is an existing post already, then a new DbEntityValidationResult is created.
 
 DbEntityValidationResult houses a DbEntityEntry and an ICollection of DbValidationErrors for a single entity. At the start of this method, a? DbEntityValidationResult is instantiated and then any errors that are discovered are added into its ValidationErrors collection.
 
@@ -173,27 +173,27 @@ DbEntityValidationResult houses a DbEntityEntry and an ICollection of DbValidati
         System.Data.Entity.Infrastructure.DbEntityEntry entityEntry,
         IDictionary\<object, object> items)
     {
-    ??? var result = new DbEntityValidationResult(entityEntry, new List<DbValidationError>());
-    ??? if (entityEntry.Entity is Post && entityEntry.State == EntityState.Added)
-    ??? {
-    ??????? Post post = entityEntry.Entity as Post;
-    ??????? //check for uniqueness of post title
-    ??????? if (Posts.Where(p => p.Title == post.Title).Count() > 0)
+      var result = new DbEntityValidationResult(entityEntry, new List<DbValidationError>());
+      if (entityEntry.Entity is Post && entityEntry.State == EntityState.Added)
+      {
+      Post post = entityEntry.Entity as Post;
+      //check for uniqueness of post title
+      if (Posts.Where(p => p.Title == post.Title).Count() > 0)
             {
-    ??????????? result.ValidationErrors.Add(
-    ??????????????????? new System.Data.Entity.Validation.DbValidationError("Title",
-    ??????????????????? "Post title must be unique."));
+        result.ValidationErrors.Add(
+        new System.Data.Entity.Validation.DbValidationError("Title",
+        "Post title must be unique."));
             }
-    ??? }
+      }
 
-    ??? if (result.ValidationErrors.Count > 0) 
+      if (result.ValidationErrors.Count > 0)
         {
-    ??????? return result;
-    ??? }
-    ??? else 
+      return result;
+      }
+      else
         {
-    ???? return base.ValidateEntity(entityEntry, items);
-    ??? }
+     return base.ValidateEntity(entityEntry, items);
+      }
     }
 ```
 
@@ -201,7 +201,7 @@ DbEntityValidationResult houses a DbEntityEntry and an ICollection of DbValidati
 
 ## Explicitly triggering validation
 
-A call to SaveChanges triggers all of the validations covered in this article. But you don?t need to rely on SaveChanges. You may prefer to validate elsewhere in your application.
+A call to SaveChanges triggers all of the validations covered in this article. But you don't need to rely on SaveChanges. You may prefer to validate elsewhere in your application.
 
 DbContext.GetValidationErrors will trigger all of the validations, those defined by annotations or the Fluent API, the validation created in IValidatableObject (e.g., Blog.Validate), and the validations performed in the DbContext.ValidateEntity method.
 
@@ -209,15 +209,15 @@ The following code will call GetValidationErrors on the current instance of a Db
 
 ```
     foreach (var validationResults in db.GetValidationErrors())
-    ??? {
-    ??? ????foreach (var error in validationResults.ValidationErrors)
-    ??? ????{
-    ? ??????????Debug.WriteLine(
+      {
+      ????foreach (var error in validationResults.ValidationErrors)
+      ????{
+    ??????????Debug.WriteLine(
                                   "Entity Property: {0}, Error {1}",
-    ????????????????????????????? error.PropertyName,
+        error.PropertyName,
                                   error.ErrorMessage);
-    ??? ????}
-    ??? }
+      ????}
+      }
 ```
 
 ?

@@ -1,5 +1,5 @@
 ---
-title: "Entity Framework Futures | Microsoft Docs"
+title: "Entity Framework Futures - EF6"
 author: divega
 ms.date: "2016-10-23"
 ms.prod: "entity-framework"

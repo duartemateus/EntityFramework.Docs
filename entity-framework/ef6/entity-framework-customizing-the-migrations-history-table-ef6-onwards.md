@@ -1,5 +1,5 @@
 ---
-title: "Entity Framework Customizing the Migrations History Table (EF6 onwards) | Microsoft Docs"
+title: "Entity Framework Customizing the Migrations History Table (EF6 onwards) - EF6"
 author: divega
 ms.date: "2016-10-23"
 ms.prod: "entity-framework"
@@ -46,9 +46,9 @@ Before you start you need to know that you can customize the migrations history 
 
 First, you will need to create a class derived from System.Data.Entity.Migrations.History.HistoryContext class. The HistoryContext class is derived from the DbContext class so configuring the migrations history table is very similar to configuring EF models with fluent API. You just need to override the OnModelCreating method and use fluent API to configure the table.
 
-> **Note:** Typically when you configure EF models you don?t need to call base.OnModelCreating() from the overridden OnModelCreating method since the DbContext.OnModelCreating() has empty body. This is not the case when configuring the migrations history table. In this case the first thing to do in your OnModelCreating() override is to actually call base.OnModelCreating(). This will configure the migrations history table in the default way which you then tweak in the overriding method.
+> **Note:** Typically when you configure EF models you don't need to call base.OnModelCreating() from the overridden OnModelCreating method since the DbContext.OnModelCreating() has empty body. This is not the case when configuring the migrations history table. In this case the first thing to do in your OnModelCreating() override is to actually call base.OnModelCreating(). This will configure the migrations history table in the default way which you then tweak in the overriding method.
 
-Let?s say you want to rename the migrations history table and put it to a custom schema called ?admin?. In addition your DBA would like you to rename the MigrationId column to Migration\_ID. ?You could achieve this by creating the following class derived from HistoryContext:
+Let's say you want to rename the migrations history table and put it to a custom schema called ?admin?. In addition your DBA would like you to rename the MigrationId column to Migration\_ID. ?You could achieve this by creating the following class derived from HistoryContext:
 
 ```
     using System.Data.Common;
@@ -95,6 +95,6 @@ Once your custom HistoryContext is ready you need to make EF aware of it by regi
 ```
 ?
 
-That?s pretty much it. Now you can go to the Package Manager Console, Enable-Migrations, Add-Migration and finally Update-Database. This should result in adding to the database a migrations history table configured according to the details you specified in your HistoryContext derived class.
+That's pretty much it. Now you can go to the Package Manager Console, Enable-Migrations, Add-Migration and finally Update-Database. This should result in adding to the database a migrations history table configured according to the details you specified in your HistoryContext derived class.
 
 ![Database](../ef6/media/database.png)

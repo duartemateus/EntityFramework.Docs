@@ -1,5 +1,5 @@
 ---
-title: "Entity Framework Designer Entity Splitting | Microsoft Docs"
+title: "Entity Framework Designer Entity Splitting - EF6"
 author: divega
 ms.date: "2016-10-23"
 ms.prod: "entity-framework"
@@ -39,7 +39,7 @@ First we'll create a database with two tables that we are going to combine into 
 -   Open Visual Studio
 -   **View -&gt; Server Explorer**
 -   Right click on **Data Connections -&gt; Add Connection?**
--   If you haven?t connected to a database from Server Explorer before you?ll need to select **Microsoft SQL Server** as the data source
+-   If you haven't connected to a database from Server Explorer before you'll need to select **Microsoft SQL Server** as the data source
 -   Connect to either LocalDb (**(localdb)\\v11.0**) or SQL Express (**.\\SQLEXPRESS**), depending on which one you have installed
 -   Enter **EntitySplitting** as the database name
 -   Select **OK** and you will be asked if you want to create a new database, select **Yes**

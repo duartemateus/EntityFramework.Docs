@@ -1,5 +1,5 @@
 ---
-title: "Entity Framework Spatial - Code First (EF5 onwards) | Microsoft Docs"
+title: "Entity Framework Spatial - Code First (EF5 onwards) - EF6"
 author: divega
 ms.date: "2016-10-23"
 ms.prod: "entity-framework"
@@ -140,7 +140,7 @@ The closest University to you is: School of Fine Art.
 
 ## View the Generated Database
 
-When you run the application the first time, the Entity Framework creates a database for you. Because we have Visual Studio 2012 installed, the database will be created on the LocalDB instance. By default, the Entity Framework names the database after the fully qualified name of the derived context (in this example that is **SpatialCodeFirst.UniversityContext**). The subsequent times the existing database will be used. ?
+When you run the application the first time, Entity Frameworkcreates a database for you. Because we have Visual Studio 2012 installed, the database will be created on the LocalDB instance. By default, Entity Frameworknames the database after the fully qualified name of the derived context (in this example that is **SpatialCodeFirst.UniversityContext**). The subsequent times the existing database will be used. ?
 
 Note, that if you make any changes to your model after the database has been created, you should use Code First Migrations to update the database schema. See [Code First to a New Database](../ef6/entity-framework-code-first-to-a-new-database.md) for an example of using Migrations.
 

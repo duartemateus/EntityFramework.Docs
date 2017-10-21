@@ -1,5 +1,5 @@
 ---
-title: "Entity Framework Config File Settings | Microsoft Docs"
+title: "Entity Framework Config File Settings - EF6"
 author: divega
 ms.date: "2016-10-23"
 ms.prod: "entity-framework"
@@ -85,7 +85,7 @@ To set a DbConfiguration type, you specify the assembly qualified type name in t
   
 ## EF Database Providers (EF6 Onwards)  
   
-Prior to EF6, the Entity Framework specific parts of a database provider had to be included as part of the core ADO.NET provider. Starting with EF6, the EF specific parts are now managed and registered seperately.  
+Prior to EF6, Entity Frameworkspecific parts of a database provider had to be included as part of the core ADO.NET provider. Starting with EF6, the EF specific parts are now managed and registered seperately.  
   
 Normally you won't need to register providers yourself. This will typically be done by the provider when you install it.  
   
@@ -177,9 +177,9 @@ For example, the SqlCeConnectionFactory, that is included in Entity Framework, r
 </entityFramework>
 ```  
   
-If you don?t set a default connection factory, Code First uses the SqlConnectionFactory, pointing to .\SQLEXPRESS. SqlConnectionFactory also has a constructor that allows you to override parts of the connection string. If you want to use a SQL Server instance other than .\SQLEXPRESS you can use this constructor to set the server.  
+If you don't set a default connection factory, Code First uses the SqlConnectionFactory, pointing to .\SQLEXPRESS. SqlConnectionFactory also has a constructor that allows you to override parts of the connection string. If you want to use a SQL Server instance other than .\SQLEXPRESS you can use this constructor to set the server.  
   
-The following configuration will cause Code First to use **MyDatabaseServer** for contexts that don?t have an explicit connection string set.  
+The following configuration will cause Code First to use **MyDatabaseServer** for contexts that don't have an explicit connection string set.  
   
 ```  
 <entityFramework> 
@@ -191,7 +191,7 @@ The following configuration will cause Code First to use **MyDatabaseServer** fo
 </entityFramework>
 ```  
   
-By default, it?s assumed that constructor arguments are of type string. You can use the type attribute to change this.  
+By default, it's assumed that constructor arguments are of type string. You can use the type attribute to change this.  
   
 ```  
 <parameter value="2" type="System.Int32" />

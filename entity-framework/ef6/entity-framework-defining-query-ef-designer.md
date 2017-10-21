@@ -1,5 +1,5 @@
 ---
-title: "Entity Framework Defining Query - EF Designer | Microsoft Docs"
+title: "Entity Framework Defining Query - EF Designer - EF6"
 author: divega
 ms.date: "2016-10-23"
 ms.prod: "entity-framework"
@@ -152,7 +152,7 @@ The Entity Designer, which provides a design surface for editing your model, is 
 -   Change the default name of the property to **FirstName**.
 -   Add another scalar property and specify **LastName** for the name.
 -   Add another scalar property and specify **Grade** for the name.
--   In the **Properties** window, change the **Grade**?s **Type** property to **Decimal**.
+-   In the **Properties** window, change the **Grade**'s **Type** property to **Decimal**.
 -   Select the **FirstName** and **LastName** properties.
 -   In the **Properties** window, change the **EntityKey** property value to **True**.
 

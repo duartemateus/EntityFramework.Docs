@@ -1,5 +1,5 @@
 ---
-title: "Entity Framework Model First | Microsoft Docs"
+title: "Entity Framework Model First - EF6"
 author: divega
 ms.date: "2016-10-23"
 ms.prod: "entity-framework"
@@ -28,7 +28,7 @@ If you are using Visual Studio 2010, you will also need to have [NuGet](http://v
 
 ## 1. Create the Application
 
-To keep things simple we?re going to build a basic console application that uses the Model First to perform data access:
+To keep things simple we're going to build a basic console application that uses the Model First to perform data access:
 
 -   Open Visual Studio
 -   **File -&gt; New -&gt; Project?**
@@ -40,7 +40,7 @@ To keep things simple we?re going to build a basic console application that uses
 
 ## 2. Create Model
 
-We?re going to make use of Entity Framework Designer, which is included as part of Visual Studio, to create our model.
+We're going to make use of Entity Framework Designer, which is included as part of Visual Studio, to create our model.
 
 -   **Project -&gt; Add New Item?**
 -   Select **Data** from the left menu and then **ADO.NET Entity Data Model**
@@ -70,7 +70,7 @@ The Entity Framework Designer is opened with a blank model. Now we can start add
 
 ?
 
-Now that we have a couple of entities, it?s time to add an association (or relationship) between them.
+Now that we have a couple of entities, it's time to add an association (or relationship) between them.
 
 -   Right-click on the design surface and select **Add New -&gt; Association?**
 -   Make one end of the relationship point to **Blog** with a multiplicity of **One** and the other end point to **Post** with a multiplicity of **Many**
@@ -94,7 +94,7 @@ If you are working in Visual Studio 2010 there are some additional steps you nee
 First up, we need to get the latest version of Entity Framework from NuGet.
 
 -   **Project ?&gt; Manage NuGet Packages?**
-    *If you don?t have the **Manage NuGet Packages?** option you should install the [latest version of NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)*
+    *If you don't have the **Manage NuGet Packages?** option you should install the [latest version of NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)*
 -   Select the **Online** tab
 -   Select the **EntityFramework** package
 -   Click **Install**
@@ -138,7 +138,7 @@ Let's go ahead and generate the database.
 
 ## 4. Reading & Writing Data
 
-Now that we have a model it?s time to use it to access some data. The classes we are going to use to access data are being automatically generated for you based on the EDMX file.
+Now that we have a model it's time to use it to access some data. The classes we are going to use to access data are being automatically generated for you based on the EDMX file.
 
 *This screen shot is from Visual Studio 2012, if you are using Visual Studio 2010 the BloggingModel.tt and BloggingModel.Context.tt files will be directly under your project rather than nested under the EDMX file.*
 
@@ -193,9 +193,9 @@ Press any key to exit...
 
 ## 5. Dealing with Model Changes
 
-Now it?s time to make some changes to our model, when we make these changes we also need to update the database schema.
+Now it's time to make some changes to our model, when we make these changes we also need to update the database schema.
 
-We?ll start by adding a new User entity to our model.
+We'll start by adding a new User entity to our model.
 
 -   Add a new **User** entity name with **Username** as the key name and **String** as the property type for the key
     

@@ -1,5 +1,5 @@
 ---
-title: "Entity Framework Working with Proxies | Microsoft Docs"
+title: "Entity Framework Working with Proxies - EF6"
 author: divega
 ms.date: "2016-10-23"
 ms.prod: "entity-framework"
@@ -13,11 +13,11 @@ ms.assetid: 869ee4dc-06f1-471d-8e0e-0a1a2bc59c30
 caps.latest.revision: 3
 ---
 # Entity Framework Working with Proxies
-When creating instances of POCO entity types, the Entity Framework often creates instances of a dynamically generated derived type that acts as a proxy for the entity. This proxy overrides some virtual properties of the entity to insert hooks for performing actions automatically when the property is accessed. For example, this mechanism is used to support lazy loading of relationships. The techniques shown in this topic apply equally to models created with Code First and the EF Designer.  
+When creating instances of POCO entity types, Entity Frameworkoften creates instances of a dynamically generated derived type that acts as a proxy for the entity. This proxy overrides some virtual properties of the entity to insert hooks for performing actions automatically when the property is accessed. For example, this mechanism is used to support lazy loading of relationships. The techniques shown in this topic apply equally to models created with Code First and the EF Designer.  
   
 ## Disabling proxy creation  
   
-Sometimes it is useful to prevent the Entity Framework from creating proxy instances. For example, serializing non-proxy instances is considerably easier than serializing proxy instances. Proxy creation can be turned off by clearing the ProxyCreationEnabled flag. One place you could do this is in the constructor of your context. For example:  
+Sometimes it is useful to prevent Entity Frameworkfrom creating proxy instances. For example, serializing non-proxy instances is considerably easier than serializing proxy instances. Proxy creation can be turned off by clearing the ProxyCreationEnabled flag. One place you could do this is in the constructor of your context. For example:  
   
 ```  
 public class BloggingContext : DbContext 

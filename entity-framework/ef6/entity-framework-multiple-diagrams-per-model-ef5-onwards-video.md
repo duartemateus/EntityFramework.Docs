@@ -1,5 +1,5 @@
 ---
-title: "Entity Framework Multiple Diagrams per Model (EF5 onwards) Video | Microsoft Docs"
+title: "Entity Framework Multiple Diagrams per Model (EF5 onwards) Video - EF6"
 author: divega
 ms.date: "2016-10-23"
 ms.prod: "entity-framework"

@@ -1,5 +1,5 @@
 ---
-title: "Entity Framework Relationships - EF Designer | Microsoft Docs"
+title: "Entity Framework Relationships - EF Designer - EF6"
 author: divega
 ms.date: "2016-10-23"
 ms.prod: "entity-framework"

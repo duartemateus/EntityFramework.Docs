@@ -1,11 +1,11 @@
 ---
-title: "Entity Framework Enum Support - Code First (EF5 onwards) | Microsoft Docs"
+title: "Entity Framework Enum Support - Code First (EF5 onwards) - EF6"
 author: divega
 ms.date: "2016-10-23"
 ms.prod: "entity-framework"
 ms.author: divega
 ms.manager: avickers
- 
+
 
 ms.technology: entity-framework-6
 ms.topic: "article"
@@ -47,18 +47,18 @@ The code also defines the DepartmentNames enumeration. By default, the enumerati
 Open the Program.cs file and paste the following class definitions.
 
 ```
-public enum DepartmentNames 
-{ 
-    English, 
-    Math, 
-    Economics 
+public enum DepartmentNames
+{
+    English,
+    Math,
+    Economics
 }     
- 
-public partial class Department 
-{ 
-    public int DepartmentID { get; set; } 
-    public DepartmentNames Name { get; set; } 
-    public decimal Budget { get; set; } 
+
+public partial class Department
+{
+    public int DepartmentID { get; set; }
+    public DepartmentNames Name { get; set; }
+    public decimal Budget { get; set; }
 }
 ```
 ?
@@ -87,9 +87,9 @@ using System.Data.Entity;
 In the Program.cs add the context definition.?
 
 ```
-public partial class EnumTestContext : DbContext 
-{ 
-    public DbSet<Department> Departments { get; set; } 
+public partial class EnumTestContext : DbContext
+{
+    public DbSet<Department> Departments { get; set; }
 }
 ```
 ?
@@ -99,20 +99,20 @@ public partial class EnumTestContext : DbContext
 Open the Program.cs file where the Main method is defined. Add the following code into the Main function. The code adds a new Department object to the context. It then saves the data. The code also executes a LINQ query that returns a Department where the name is DepartmentNames.English.
 
 ```
-using (var context = new EnumTestContext()) 
-{ 
-    context.Departments.Add(new Department { Name = DepartmentNames.English }); 
- 
-    context.SaveChanges(); 
- 
-    var department = (from d in context.Departments 
-                        where d.Name == DepartmentNames.English 
-                        select d).FirstOrDefault(); 
- 
-    Console.WriteLine( 
-        "DepartmentID: {0} Name: {1}", 
+using (var context = new EnumTestContext())
+{
+    context.Departments.Add(new Department { Name = DepartmentNames.English });
+
+    context.SaveChanges();
+
+    var department = (from d in context.Departments
+                        where d.Name == DepartmentNames.English
+                        select d).FirstOrDefault();
+
+    Console.WriteLine(
+        "DepartmentID: {0} Name: {1}",
         department.DepartmentID,  
-        department.Name); 
+        department.Name);
 }
 ```
 
@@ -125,7 +125,7 @@ DepartmentID: 1 Name: English
 
 ## View the Generated Database
 
-When you run the application the first time, the Entity Framework creates a database for you. Because we have Visual Studio 2012 installed, the database will be created on the LocalDB instance. By default, the Entity Framework names the database after the fully qualified name of the derived context (for this example that is **EnumCodeFirst.EnumTestContext**). The subsequent times the existing database will be used. ?
+When you run the application the first time, Entity Framework creates a database for you. Because we have Visual Studio 2012 installed, the database will be created on the LocalDB instance. By default, Entity Framework names the database after the fully qualified name of the derived context (for this example that is **EnumCodeFirst.EnumTestContext**). The subsequent times the existing database will be used. ?
 
 Note, that if you make any changes to your model after the database has been created, you should use Code First Migrations to update the database schema. See [Code First to a New Database](../ef6/entity-framework-code-first-to-a-new-database.md) for an example of using Migrations.
 

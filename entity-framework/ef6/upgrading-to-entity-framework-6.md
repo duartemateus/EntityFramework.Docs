@@ -1,5 +1,5 @@
 ---
-title: "Upgrading to Entity Framework 6 | Microsoft Docs"
+title: "Upgrading to Entity Framework 6 - EF6"
 author: divega
 ms.date: "2016-10-23"
 ms.prod: "entity-framework"
@@ -15,7 +15,7 @@ caps.latest.revision: 3
 # Upgrading to Entity Framework 6
 In previous versions of EF the code was split between core libraries (primarily System.Data.Entity.dll) shipped as part of the .NET Framework and out-of-band (OOB) libraries (primarily EntityFramework.dll) shipped in a NuGet package. EF6 takes the code from the core libraries and incorporates it into the OOB libraries. This was necessary in order to allow EF to be made open source. The consequence of this is that applications will need to be rebuilt against the moved types.
 
-This should be straightforward for applications that make use of DbContext as shipped in EF 4.1 and later. A little more work is required for applications that make use of ObjectContext but it still isn?t hard to do.
+This should be straightforward for applications that make use of DbContext as shipped in EF 4.1 and later. A little more work is required for applications that make use of ObjectContext but it still isn't hard to do.
 
 ?
 

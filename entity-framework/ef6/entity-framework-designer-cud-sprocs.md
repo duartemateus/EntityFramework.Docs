@@ -1,11 +1,11 @@
 ---
-title: "Entity Framework Designer CUD Sprocs | Microsoft Docs"
+title: "Entity Framework Designer CUD Sprocs - EF6"
 author: divega
 ms.date: "2016-10-23"
 ms.prod: "entity-framework"
 ms.author: divega
 ms.manager: avickers
- 
+
 
 ms.technology: entity-framework-6
 ms.topic: "article"
@@ -13,7 +13,7 @@ ms.assetid: 1e773972-2da5-45e0-85a2-3cf3fbcfa5cf
 caps.latest.revision: 3
 ---
 # Entity Framework Designer CUD Sprocs
-This step-by-step walkthrough show how to map the create\\insert, update, and delete (CUD) operations of an entity type to stored procedures using the Entity Framework Designer (EF Designer). ?By default, the Entity Framework automatically generates the SQL statements for the CUD operations, but you can also map stored procedures to these operations. ?
+This step-by-step walkthrough show how to map the create\\insert, update, and delete (CUD) operations of an entity type to stored procedures using the Entity Framework Designer (EF Designer). ?By default, Entity Framework automatically generates the SQL statements for the CUD operations, but you can also map stored procedures to these operations. ?
 
 Note, that Code First does not support mapping to stored procedures or functions. However, you can call stored procedures or functions by using the?System.Data.Entity.DbSet.SqlQuery?method. For example: `context.Products.SqlQuery("EXECUTE [dbo].[GetAllProducts]")`.
 
@@ -26,7 +26,7 @@ When mapping the CUD operations to stored procedures, the following consideratio
 -   If you are mapping one of the CUD operations to a stored procedure, map all of them. If you do not map all three, the unmapped operations will fail if executed and an?**UpdateException**?will be thrown.
 -   You must map every parameter of the stored procedure to entity properties.
 -   If the server generates the primary key value for the inserted row, you must map this value back to the entity's key property. In the example that follows, the?**InsertPerson**?stored procedure returns the newly created primary key as part of the stored procedure's result set. The primary key is mapped to the entity key (**PersonID**) using the?**&lt;Add Result Bindings&gt;**?feature of the EF Designer.
--   The stored procedure calls are mapped 1:1 with the entities in the conceptual model. For example, if you implement an inheritance hierarchy in your conceptual model and then map the CUD stored procedures for the **Parent** (base) and the **Child** (derived) entities, saving the **Child** changes will only call the **Child**?s stored procedures, it will not trigger the **Parent**?s stored procedures calls.
+-   The stored procedure calls are mapped 1:1 with the entities in the conceptual model. For example, if you implement an inheritance hierarchy in your conceptual model and then map the CUD stored procedures for the **Parent** (base) and the **Child** (derived) entities, saving the **Child** changes will only call the **Child**'s stored procedures, it will not trigger the **Parent**'s stored procedures calls.
 
 ?
 
@@ -59,9 +59,9 @@ To complete this walkthrough, you must install the [School database](../ef6/enti
 -   In the?Choose Your Database Objects?dialog box, under the?**Tables**?node, select the?**Person** table.
 -   Also, select the following stored procedures under the **Stored Procedures and Functions** node: **DeletePerson**, **InsertPerson**, and **UpdatePerson**.?
 -   Starting with Visual Studio 2012 the EF Designer supports bulk import of stored procedures. The **Import selected stored procedures and functions into the entity model** is checked by default. Since in this example we have stored procedures that insert, update, and delete entity types, we do not want to import them and will uncheck this checkbox.?
-    
+
     ![ImportSProcs](../ef6/media/importsprocs.jpg)
-    
+
 -   Click?**Finish**.
     The EF Designer, which provides a design surface for editing your model, is displayed.
 
@@ -79,9 +79,9 @@ To complete this walkthrough, you must install the [School database](../ef6/enti
 -   Type?**NewPersonID**, the name of the parameter returned by the?**InsertPerson**?stored procedure. Make sure not to type leading or trailing spaces.
 -   Press?**Enter**.
 -   By default,?**NewPersonID**?is mapped to the entity key?**PersonID**. Note that an arrow indicates the direction of the mapping: The value of the result column is supplied to the property.
-    
+
     ![MappingDetails](../ef6/media/mappingdetails.png)
-    
+
 -   Click?**&lt;Select Update Function&gt;**?and select?**UpdatePerson**?from the resulting drop-down list.
 -   Default mappings between stored procedure parameters and entity properties appear.
 -   Click?**&lt;Select Delete Function&gt;**?and select?**DeletePerson**?from the resulting drop-down list.
@@ -125,13 +125,13 @@ The code creates a new **Person** object, then updates the object, and finally d
             newInstructor.PersonID);
 
         // SaveChanges will call the InsertPerson sproc.  
-        // The PersonID property will be assigned the value 
-        // returned by the sproc. 
+        // The PersonID property will be assigned the value
+        // returned by the sproc.
         context.SaveChanges();
 
         Console.WriteLine("After SaveChanges, the PersonID is: {0}",
             newInstructor.PersonID);
-                    
+
         // Modify the object and call SaveChanges.
         // This time, the UpdatePerson will be called.
         newInstructor.FirstName = "Rachel";
@@ -147,7 +147,7 @@ The code creates a new **Person** object, then updates the object, and finally d
             FirstOrDefault();
 
         if (deletedInstructor == null)
-            Console.WriteLine("A person with PersonID {0} was deleted.", 
+            Console.WriteLine("A person with PersonID {0} was deleted.",
                 newInstructor.PersonID);
     }
 ```

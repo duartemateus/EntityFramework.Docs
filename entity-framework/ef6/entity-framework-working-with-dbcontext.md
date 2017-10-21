@@ -1,5 +1,5 @@
 ---
-title: "Entity Framework Working with DbContext | Microsoft Docs"
+title: "Entity Framework Working with DbContext - EF6"
 author: divega
 ms.date: "2016-10-23"
 ms.prod: "entity-framework"
@@ -13,7 +13,7 @@ ms.assetid: b0e6bddc-8a87-4d51-b1cb-7756df938c23
 caps.latest.revision: 3
 ---
 # Entity Framework Working with DbContext
-The Entity Framework enables you to query, insert, update, and delete data, using common language runtime (CLR) objects (known as entities). The Entity Framework maps the entities and relationships that are defined in your model to a database. The Entity Framework provides facilities to do the following: materialize data returned from the database as entity objects; track changes that were made to the objects; handle concurrency; propagate object changes back to the database; and bind objects to controls.  
+Entity Frameworkenables you to query, insert, update, and delete data, using common language runtime (CLR) objects (known as entities). Entity Framework maps the entities and relationships that are defined in your model to a database. Entity Frameworkprovides facilities to do the following: materialize data returned from the database as entity objects; track changes that were made to the objects; handle concurrency; propagate object changes back to the database; and bind objects to controls.  
   
 The primary class that is responsible for interacting with data as objects is [System.Data.Entity.DbContext](https://msdn.microsoft.com/library/system.data.entity.dbcontext) (often referred to as context). The context class manages the entity objects during run time, which includes populating objects with data from a database, change tracking, and persisting data to the database.  
   

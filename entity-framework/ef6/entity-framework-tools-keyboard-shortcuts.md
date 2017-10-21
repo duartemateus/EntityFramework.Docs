@@ -1,5 +1,5 @@
 ---
-title: "Entity Framework Tools Keyboard Shortcuts | Microsoft Docs"
+title: "Entity Framework Tools Keyboard Shortcuts - EF6"
 author: divega
 ms.date: "2016-10-23"
 ms.prod: "entity-framework"
@@ -27,7 +27,7 @@ This page provides a list of keyboard shorcuts that are available in the various
 |----------|--------|-------|
 | **Alt+n** | Move to next screen | Not available for all selections of model contents. |
 | **Alt+f** | Finish wizard | Not available for all selections of model contents. |
-| **Alt+w** | Switch focus to the ?What should the model contain?? pane. | ?  |
+| **Alt+w** | Switch focus to the ?What should the model contain pane. | ?  |
 
 ?
 
@@ -39,7 +39,7 @@ This page provides a list of keyboard shorcuts that are available in the various
 |----------|--------|-------|
 | **Alt+n** | Move to next screen | ? |
 | **Alt+p** | Move to previous screen | ? |
-| **Alt+w** | Switch focus to the ?What should the model contain?? pane. | ? |
+| **Alt+w** | Switch focus to the ?What should the model contain pane. | ? |
 | **Alt+c** | Open the ?Connection Properties? window | Allows for the definition of a new database connection. |
 | **Alt+e** | Exclude sensitive data from the connection string | ? |
 | **Alt+i** | Include sensitive data in the connection string | ? |
@@ -115,7 +115,7 @@ This page provides a list of keyboard shorcuts that are available in the various
 | **Shift + Pg Down** | Scroll diagram right | Scrolls the design surface to the right. |
 | **Shift + Pg Up** | Scroll diagram left | Scrolls the design surface to the left. |
 | **F2** | Enter edit mode | Standard keyboard shortcut for entering edit mode for a text control. |
-| **Shift + F10** | Display shortcut menu | Standard keyboard shortcut for displaying a selected item?s shortcut menu. |
+| **Shift + F10** | Display shortcut menu | Standard keyboard shortcut for displaying a selected item's shortcut menu. |
 | **Control + Shift + Mouse Left Click**  <br/> **Control + Shift + MouseWheel forward** | Semantic Zoom In | Zooms in on the area of the Diagram View beneath the mouse pointer. |
 | **Control + Shift + Mouse Right Click** <br/> **Control + Shift + MouseWheel backward** | Semantic Zoom Out | Zooms out from the area of the Diagram View beneath the mouse pointer. It re-centers the diagram when you zoom out too far for the current diagram center. |
 | **Control + Shift + '+'** <br/> **Control + MouseWheel forward** | Zoom In | Zooms in on the center of the Diagram View. |

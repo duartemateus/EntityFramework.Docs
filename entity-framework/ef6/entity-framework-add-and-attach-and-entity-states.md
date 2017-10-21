@@ -1,5 +1,5 @@
 ---
-title: "Entity Framework Add and Attach and Entity States | Microsoft Docs"
+title: "Entity Framework Add and Attach and Entity States - EF6"
 author: divega
 ms.date: "2016-10-23"
 ms.prod: "entity-framework"

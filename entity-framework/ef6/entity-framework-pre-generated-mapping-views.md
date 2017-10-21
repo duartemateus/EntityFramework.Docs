@@ -1,11 +1,11 @@
 ---
-title: "Entity Framework Pre-Generated Mapping Views | Microsoft Docs"
+title: "Entity Framework Pre-Generated Mapping Views - EF6"
 author: divega
 ms.date: "2016-10-23"
 ms.prod: "entity-framework"
 ms.author: divega
 ms.manager: avickers
- 
+
 
 ms.technology: entity-framework-6
 ms.topic: "article"
@@ -13,7 +13,7 @@ ms.assetid: 917ba9c8-6ddf-4631-ab8c-c4fb378c2fcd
 caps.latest.revision: 3
 ---
 # Entity Framework Pre-Generated Mapping Views
-Before the Entity Framework can execute a query or save changes to the data source, it must generate a set of mapping views to access the database. These mapping views are a set of Entity SQL statement that represent the database in an abstract way, and are part of the metadata which is cached per application domain. If you create multiple instances of the same context in the same application domain, they will reuse mapping views from the cached metadata rather than regenerating them. Because mapping view generation is a significant part of the overall cost of executing the first query, the Entity Framework enables you to pre-generate mapping views and include them in the compiled project.?For more information, see? [Performance Considerations (Entity Framework)](../ef6/performance-considerations-for-ef-4-5-and-6.md).
+Before Entity Framework can execute a query or save changes to the data source, it must generate a set of mapping views to access the database. These mapping views are a set of Entity SQL statement that represent the database in an abstract way, and are part of the metadata which is cached per application domain. If you create multiple instances of the same context in the same application domain, they will reuse mapping views from the cached metadata rather than regenerating them. Because mapping view generation is a significant part of the overall cost of executing the first query, Entity Framework enables you to pre-generate mapping views and include them in the compiled project.?For more information, see? [Performance Considerations (Entity Framework)](../ef6/performance-considerations-for-ef-4-5-and-6.md).
 
 ?
 
@@ -110,12 +110,12 @@ The following is an extract from the DbMappingViewCache that is generated with t
             SELECT VALUE -- Constructing Blogs
             [BlogApp.Models.Blog](T1.Blog_BlogId, T1.Blog_Test, T1.Blog_title, T1.Blog_Active, T1.Blog_SomeDecimal)
             FROM (
-            SELECT 
-                T.BlogId AS Blog_BlogId, 
-                T.Test AS Blog_Test, 
-                T.title AS Blog_title, 
-                T.Active AS Blog_Active, 
-                T.SomeDecimal AS Blog_SomeDecimal, 
+            SELECT
+                T.BlogId AS Blog_BlogId,
+                T.Test AS Blog_Test,
+                T.title AS Blog_title,
+                T.Active AS Blog_Active,
+                T.SomeDecimal AS Blog_SomeDecimal,
                 True AS _from0
             FROM CodeFirstDatabase.Blog AS T
             ) AS T1");

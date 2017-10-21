@@ -1,5 +1,5 @@
 ---
-title: "Entity Framework Glossary | Microsoft Docs"
+title: "Entity Framework Glossary - EF6"
 author: divega
 ms.date: "2016-10-23"
 ms.prod: "entity-framework"

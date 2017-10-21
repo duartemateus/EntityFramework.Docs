@@ -1,5 +1,5 @@
 ---
-title: "Entity Framework Complex Types - EF Designer | Microsoft Docs"
+title: "Entity Framework Complex Types - EF Designer - EF6"
 author: divega
 ms.date: "2016-10-23"
 ms.prod: "entity-framework"
@@ -38,7 +38,7 @@ When you work with objects that represent complex types, be aware of the followi
 
 ?
 
-## Refactor an Entity?s Properties into New Complex Type
+## Refactor an Entity's Properties into New Complex Type
 
 If you already have an entity in your conceptual model you may want to refactor some of the properties into a complex type property.
 
